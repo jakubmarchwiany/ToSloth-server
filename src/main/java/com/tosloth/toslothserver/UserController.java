@@ -4,6 +4,7 @@ import java.util.List;
 
 import exceptionController.UserAlreadyExistsException;
 import exceptionController.UserNotFoundException;
+import exceptionController.UserWrongLoginDetailsException;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -47,14 +48,12 @@ public class UserController {
             user = repository.getUserByNickname(logUser.getNickname());
 
             if(user.getPassword().equals(logUser.getPassword())){
-
                 user = repository.getUserByNickname(logUser.getNickname());
                 return user;
-
             }
-            user = null;
+            throw new UserWrongLoginDetailsException(logUser.getNickname(),logUser.getPassword());
         }
-        return user;
+        throw new UserWrongLoginDetailsException(logUser.getNickname(),logUser.getPassword());
     }
 
     @GetMapping("/users/{id}")

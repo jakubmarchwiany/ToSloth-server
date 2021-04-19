@@ -7,11 +7,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
-public class UserAlreadyExistsAdvice {
+public class UserWrongLoginDetailsAdvice {
     @ResponseBody
-    @ExceptionHandler(UserAlreadyExistsException.class)
-    @ResponseStatus(HttpStatus.CONFLICT)
-    String userAlreadyExistsHandler(UserAlreadyExistsException ex) {
+    @ExceptionHandler(UserWrongLoginDetailsException.class)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
+    String userWrongLoginDetailsHandler(UserWrongLoginDetailsException ex) {
         return ex.getMessage();
     }
 }
+
+
+

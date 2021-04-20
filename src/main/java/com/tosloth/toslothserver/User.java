@@ -3,6 +3,7 @@ package com.tosloth.toslothserver;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.util.ArrayList;
 import java.util.Objects;
 
 @Document(collection = "Users")
@@ -16,6 +17,8 @@ public class User {
     private String lastname;
     private String email;
 
+    private ArrayList<Goal> goalsArrayList = new ArrayList<>();
+
     public User() {}
 
     public User(String nickname, String password, String firstname, String lastname, String email) {
@@ -26,9 +29,9 @@ public class User {
         this.email = email;
     }
 
-    public User(String nickname, String password) {
-        this.nickname = nickname;
-        this.password = password;
+    public User(String text, String hashPassword) {
+        nickname = text;
+        password = hashPassword;
     }
 
     public String getId() {
@@ -77,6 +80,14 @@ public class User {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public ArrayList<Goal> getGoalsArrayList() {
+        return goalsArrayList;
+    }
+
+    public void setGoalsArrayList(ArrayList<Goal> goalsArrayList) {
+        this.goalsArrayList = goalsArrayList;
     }
 
     @Override

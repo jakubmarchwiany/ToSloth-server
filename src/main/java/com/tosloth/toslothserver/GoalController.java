@@ -4,6 +4,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+
 @RestController
 public class GoalController {
 
@@ -16,12 +17,19 @@ public class GoalController {
 
     @PostMapping("/goals")
     Goal addGoal(@RequestBody Goal goal) {
-
-
-        System.out.println(goal.toString());
-        System.out.println("eloszka");
-
         return repository.save(goal);
+    }
+
+    @PostMapping("/goals/update")
+    void updateGoal(@RequestBody Goal goal){
+        Goal goalFromDb = repository.findGoalById(goal.getId());
+
+        goalFromDb.toString();
+
+        repository.delete(goalFromDb);
+
+
+        repository.save(goal);
     }
 
 

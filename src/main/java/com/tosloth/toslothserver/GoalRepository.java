@@ -10,4 +10,8 @@ public interface GoalRepository extends MongoRepository<Goal, String> {
 
     @Query("{ 'owner' : ?0 }")
     List<Goal> findGoalByNickname(String nickname);
+
+    @Query("{ 'id' : ?0 }")
+    Goal findGoalById(String id);
+
 }

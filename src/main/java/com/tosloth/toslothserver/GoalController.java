@@ -24,10 +24,7 @@ public class GoalController {
     void updateGoal(@RequestBody Goal goal){
         Goal goalFromDb = repository.findGoalById(goal.getId());
 
-        goalFromDb.toString();
-
         repository.delete(goalFromDb);
-
 
         repository.save(goal);
     }
@@ -37,6 +34,13 @@ public class GoalController {
     List<Goal> all(@PathVariable String nickname) {
 
         return repository.findGoalByNickname(nickname);
+    }
+
+    @GetMapping("/goals/remove/{id}")
+    void removeGoal(@PathVariable String id) {
+
+        System.out.println("ta udało się");
+        repository.deleteById(id);
     }
 
 

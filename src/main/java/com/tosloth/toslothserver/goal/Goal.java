@@ -1,4 +1,4 @@
-package com.tosloth.toslothserver;
+package com.tosloth.toslothserver.goal;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
@@ -7,7 +7,6 @@ import java.util.ArrayList;
 
 @Document(collection = "Goals")
 public class Goal {
-
 
     @Id
     private String id;

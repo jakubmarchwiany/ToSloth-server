@@ -1,6 +1,5 @@
-package exceptionController;
+package exceptionController.user;
 
-import exceptionController.UserNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -8,11 +7,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
-public class UserNotFoundAdvice {
+public class UserWrongLoginDetailsAdvice {
     @ResponseBody
-    @ExceptionHandler(UserNotFoundException.class)
+    @ExceptionHandler(UserWrongLoginDetailsException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String userNotFoundHandler(UserNotFoundException ex) {
+    String userWrongLoginDetailsHandler(UserWrongLoginDetailsException ex) {
         return ex.getMessage();
     }
 }
+
+
+

@@ -1,4 +1,4 @@
-package exceptionController;
+package exceptionController.user;
 
 
 public class UserWrongLoginDetailsException extends RuntimeException{

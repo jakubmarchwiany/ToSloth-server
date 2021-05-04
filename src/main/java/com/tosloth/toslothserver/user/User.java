@@ -1,5 +1,6 @@
-package com.tosloth.toslothserver;
+package com.tosloth.toslothserver.user;
 
+import com.tosloth.toslothserver.goal.Goal;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 

@@ -1,4 +1,4 @@
-package exceptionController;
+package exceptionController.user;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -7,14 +7,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
-public class UserWrongLoginDetailsAdvice {
+public class UserAlreadyExistsAdvice {
     @ResponseBody
-    @ExceptionHandler(UserWrongLoginDetailsException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    String userWrongLoginDetailsHandler(UserWrongLoginDetailsException ex) {
+    @ExceptionHandler(UserAlreadyExistsException.class)
+    @ResponseStatus(HttpStatus.CONFLICT)
+    String userAlreadyExistsHandler(UserAlreadyExistsException ex) {
         return ex.getMessage();
     }
 }
-
-
-

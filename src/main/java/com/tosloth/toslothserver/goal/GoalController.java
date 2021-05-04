@@ -1,4 +1,4 @@
-package com.tosloth.toslothserver;
+package com.tosloth.toslothserver.goal;
 
 import org.springframework.web.bind.annotation.*;
 
@@ -14,6 +14,15 @@ public class GoalController {
         this.repository = repository;
     }
 
+    @GetMapping("/goals/{nickname}")
+    List<Goal> all(@PathVariable String nickname) {
+        return repository.findGoalByNickname(nickname);
+    }
+
+    @GetMapping("/goals/remove/{id}")
+    void removeGoal(@PathVariable String id) {
+        repository.deleteById(id);
+    }
 
     @PostMapping("/goals")
     Goal addGoal(@RequestBody Goal goal) {
@@ -23,29 +32,7 @@ public class GoalController {
     @PostMapping("/goals/update")
     void updateGoal(@RequestBody Goal goal){
         Goal goalFromDb = repository.findGoalById(goal.getId());
-
         repository.delete(goalFromDb);
-
         repository.save(goal);
     }
-
-
-    @GetMapping("/goals/{nickname}")
-    List<Goal> all(@PathVariable String nickname) {
-
-        return repository.findGoalByNickname(nickname);
-    }
-
-    @GetMapping("/goals/remove/{id}")
-    void removeGoal(@PathVariable String id) {
-
-        System.out.println("ta udało się");
-        repository.deleteById(id);
-    }
-
-
-
-
-
-
 }

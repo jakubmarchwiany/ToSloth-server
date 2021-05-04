@@ -1,4 +1,4 @@
-package exceptionController;
+package exceptionController.user;
 
 public class UserNotFoundException extends RuntimeException{
     public UserNotFoundException(String id) {
